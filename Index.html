@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Music 🎶 Web3</title>
+  <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.min.js"></script>
+</head>
+<body>
+  <h1>Murakaza neza kuri Music 🎶 Web3!</h1>
+
+  <button id="connectWallet">Connect Wallet</button>
+  <audio id="audioPlayer" controls>
+    <source src="song.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <script>
+    const button = document.getElementById('connectWallet');
+    button.onclick = async () => {
+      if (window.ethereum) {
+        await window.ethereum.request({ method: 'eth_requestAccounts' });
+        alert('Wallet connected!');
+      } else {
+        alert('Install MetaMask first!');
+      }
+    }
+  </script>
+</body>
+</html>
