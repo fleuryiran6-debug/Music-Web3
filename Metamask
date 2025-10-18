@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Music 🎶 Web3</title>
+  <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.min.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+    button { padding: 10px 20px; font-size: 16px; cursor: pointer; }
+  </style>
+</head>
+<body>
+
+  <h1>Murakaza neza kuri Music 🎶 Web3!</h1>
+
+  <!-- Button ya Wallet -->
+  <button id="connectWallet">Connect Wallet</button>
+
+  <script>
+    const button = document.getElementById('connectWallet');
+
+    button.onclick = async () => {
+      if (window.ethereum) {
+        try {
+          const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+          const userAccount = accounts[0];
+          button.textContent = 'Wallet Connected';
+          button.disabled = true;
+          console.log('Connected wallet address:', userAccount);
+          alert(`Wallet connected: ${userAccount}`);
+        } catch (error) {
+          console.error(error);
+          alert('Connection failed!');
+        }
+      } else {
+        alert('Install MetaMask first!');
+      }
+    };
+  </script>
+
+</body>
+</html>
